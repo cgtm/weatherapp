@@ -1,0 +1,43 @@
+{
+  "name": "weather",
+  "version": "1.0.0",
+  "description": "Test app for Wipro Digital",
+  "main": "bundle.js",
+  "scripts": {
+    "env": "env",
+    "start:old": "npm run build-css && budo ./js/main.js:core.js --live --host localhost --open",
+    "start": "run-p nodemon server",
+    "server": "budo ./js/main.js:core.js --live --host localhost --open",
+    "build": "npm run build-css && browserify ./js/main.js -o core.js",
+    "build-css": "node-sass --include-path ./css css/main.scss core.css",
+    "test": "node ./js/test.js | ./node_modules/.bin/tap-spec",
+    "nodemon": "nodemon -e js,scss -w ./js -w ./css -V -x 'npm run build-css && npm test'"
+  },
+  "author": "Cam McVey",
+  "license": "ISC",
+  "dependencies": {
+    "domready": "^0.3.0",
+    "es6-promise": "^3.2.1",
+    "isomorphic-fetch": "^2.2.1",
+    "knockout": "^3.4.0",
+    "lodash": "^4.15.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.0",
+    "budo": "^9.0.0",
+    "node-localstorage": "^1.3.0",
+    "node-sass": "^3.9.0",
+    "nodemon": "^1.10.2",
+    "npm-run-all": "^3.1.0",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.0"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  }
+}

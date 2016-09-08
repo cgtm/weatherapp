@@ -1,0 +1,9 @@
+node_modules/
+.idea/
+.localstorage/
+/core.css
+/.eslintrc
+data/
+/core.js
+/wiproweather-log.txt
+/npm-debug.log*

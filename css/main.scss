@@ -1,0 +1,99 @@
+// Set up some typical typographic defaults
+$fontFamily: Menlo, 'DejaVu Sans Mono', Monaco, 'PT Mono', monospace ;
+$baseFontSize: 16px;
+$baseLineHeight: 1.2;
+
+// Some basic spacing settings
+$baseSpacing: 4px;
+$bigPadding: $baseSpacing*4;
+$cellPadding: $baseSpacing $baseSpacing*2;
+
+
+// Background colours for day/night forecasts
+$mainBGcolor: #fefefe;
+$dayBGcolor: #f8f774;
+$nightBGcolor: #eeeef3;
+
+
+//////////////// Body \\\\\\\\\\\\\\\\
+body {
+  font-size: $baseFontSize;
+  font-family: $fontFamily;
+  line-height: $baseLineHeight;
+  padding: $bigPadding;
+  background-color: $mainBGcolor;
+}
+
+//////////////// Tables \\\\\\\\\\\\\\\\
+table {
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: $cellPadding;
+}
+
+th {
+  font-weight: bold;
+  font-size: $baseFontSize * 1.1;
+}
+
+td {
+
+  background-color: $nightBGcolor;
+
+  .daytime & {
+      background-color: $dayBGcolor;
+  }
+
+  .dayFinish & {
+    border-bottom: $bigPadding solid $mainBGcolor;
+  }
+
+}
+
+//////////////// Lists \\\\\\\\\\\\\\\\
+dl,
+dt,
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+dt,
+dd{
+  display: inline;
+}
+
+dt {
+  font-weight: bold;
+}
+
+//////////////// Responsive \\\\\\\\\\\\\\\\
+
+// Small mobile screens
+@media only screen and (max-width: 480px){
+  .temp, .wind, .pressure, .cloud, .humidity { display: none; }
+}
+
+// Small lanscape mobile screens
+@media only screen and (max-width: 620px){
+  .wind, .pressure, .cloud, .humidity { display: none; }
+}
+
+// Landscape mobile screens
+@media only screen and (max-width: 768px) {
+  .pressure, .wind { display: none; }
+}
+
+// Tablets and small monitors
+@media only screen and (max-width: 1024px) {
+  .wind { display: none; }
+}
+
+
+
+
+//////////////// Imports \\\\\\\\\\\\\\\\
+@import "normalize";

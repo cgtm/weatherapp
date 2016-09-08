@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>5 day weather for Glasgow</title>
+  <link rel="stylesheet" href="core.css">
+  <script src="core.js"></script>
+</head>
+<body>
+
+<main data-bind="if: data">
+
+  <!-- ko with: data -->
+
+  <header>
+    <h1>5 day weather for <span data-bind="text: city"></span>, <span data-bind="text: country"></span></h1>
+  </header>
+
+  <section class="summary" data-bind="visible: $root.showingSummary()">
+    <h2>Summary Report</h2>
+
+    <div data-bind="foreach: days">
+      <dl>
+        <dt><span data-bind="text: day" class="day"></span>:</dt>
+        <dd><!-- ko if: description --><span data-bind="text: description[0]" class="description"></span>, <!-- /ko --><span data-bind="text: lowTemp"></span>C to <span data-bind="text: highTemp"></span>C</dd>
+      </dl>
+    </div>
+
+    <!--
+      The click handler below should really just be "click: $root.shouldShowSummary(false)" but there's a bug (?)
+      in Knockout that means the call needs to be wrapped in an anonymous function to work properly.
+      Ref: http://stackoverflow.com/questions/29756786/knockout-click-binding-strange-behavior
+    -->
+    <p><a href="#" data-bind="click: $root.toggleView">Show detailed forecast</a></p>
+
+  </section>
+
+  <section class="details" data-bind="visible: !$root.showingSummary()">
+    <h2>Detailed Report</h2>
+
+    <table data-bind="if: forecasts">
+      <thead>
+      <tr>
+        <th class="day" scope="col">Day</th>
+        <th class="dt" scope="col">Time</th>
+        <th class="description" scope="col">Description</th>
+        <th class="temp" scope="col">Temp</th>
+        <th class="wind" scope="col">Wind</th>
+        <th class="pressure" scope="col">Pressure</th>
+        <th class="cloud" scope="col">Cloud</th>
+        <th class="humidity" scope="col">Humidity</th>
+      </tr>
+      </thead>
+      <tbody data-bind="foreach: forecasts">
+      <tr data-bind="css: { daytime: daytime, dayFinish: (new Date(dt).getHours() === 21) }">
+        <td class="day"><span data-bind="text: day"></span></td>
+        <td class="dt"><span data-bind="text: $root.niceHours(dt)"></span></td>
+        <td class="description"><span data-bind="text: description"></span></td>
+        <td class="temp"><span data-bind="text: temp"></span>C</td>
+        <td class="wind"><span data-bind="text: windSpeed"></span>MPH from the <span data-bind="text: windDirection"></span></td>
+        <td class="pressure"><span data-bind="text: pressure"></span>hPa</td>
+        <td class="cloud"><span data-bind="text: cloudCover"></span>%</td>
+        <td class="humidity"><span data-bind="text: humidity"></span>%</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <p><a href="#" data-bind="click: $root.toggleView">Show summary forecast</a></p>
+
+  </section>
+
+  <!-- /ko -->
+
+</main>
+
+<aside data-bind="ifnot: data">
+  <p>Please wait, fetching latest data.</p>
+</aside>
+
+</body>
+</html>
