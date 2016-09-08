@@ -34,9 +34,9 @@ If I were to start this project again, I would certainly make different choices.
 1. I would have tried very hard to maintain the discipline of writing tests first, as the ones I did write were excellent at showing me were I'd missed things like moving functions to different files, etc. By the end, I was organising code more than writing new stuff, so what I did write are missing test.
 
 ## Usage
-The repo for the project can be found here: xxx
+The repo for the project can be found here: https://github.com/cgtm/weatherapp
 
-Please download the zip and unpack it into an empty folder
+Please download the zip and unpack it, then `cd` into the new folder
 
 ### Build
 `npm install`

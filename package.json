@@ -15,6 +15,14 @@
   },
   "author": "Cam McVey",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cgtm/weatherapp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cgtm/weatherapp/issues"
+  },
+  "homepage": "https://github.com/cgtm/weatherapp#readme",
   "dependencies": {
     "domready": "^0.3.0",
     "es6-promise": "^3.2.1",
