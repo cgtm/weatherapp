@@ -7,10 +7,10 @@
     "env": "env",
     "start": "run-p nodemon server",
     "server": "budo ./js/main.js:core.js --live --host localhost --open",
-    "build": "npm run build-css && browserify ./js/main.js -o core.js",
-    "build-css": "node-sass --include-path ./css css/main.scss core.css",
+    "build": "npm run build:css && browserify ./js/main.js -o core.js -t [ babelify ]",
+    "build:css": "node-sass --include-path ./css css/main.scss core.css",
     "test": "node ./js/test.js | ./node_modules/.bin/tap-spec",
-    "nodemon": "nodemon -e js,scss -w ./js -w ./css -V -x 'npm run build-css && npm test'"
+    "nodemon": "nodemon -e js,scss -w ./js -w ./css -V -x 'npm run build:css && npm test'"
   },
   "author": "Cam McVey",
   "license": "ISC",
