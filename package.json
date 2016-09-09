@@ -5,7 +5,6 @@
   "main": "bundle.js",
   "scripts": {
     "env": "env",
-    "start:old": "npm run build-css && budo ./js/main.js:core.js --live --host localhost --open",
     "start": "run-p nodemon server",
     "server": "budo ./js/main.js:core.js --live --host localhost --open",
     "build": "npm run build-css && browserify ./js/main.js -o core.js",
