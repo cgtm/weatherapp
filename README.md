@@ -38,10 +38,10 @@ The repo for the project can be found here: https://github.com/cgtm/weatherapp
 
 Please download the zip and unpack it, then `cd` into the new folder
 
-### Build
+### Install
 `npm install`
 
-The only assumption is, as the requirements state, "a node.js environment with the latest version installed", so I've developed this with node 6.5.0 which may mean there are problems if using an earlier version.
+The only assumption is, as the requirements state, "a node.js environment with the latest version installed", so I've developed this with node 6.5.0 and npm 3.10.7 which may mean there are problems if using an earlier version. Specifically, `npm install` can take up to five minutes when using node 4.x
 
 ### Test
 `npm test`
@@ -70,3 +70,5 @@ Here are some quick thoughts on further work I would have done, given more time
 * put together a 'build' script that minifies/autoprefixes / strips out unused stuff / and parcels up to a 'static' folder
 * have a nicer mobile view of details than just hiding stuff that doesn't fit
 * auto deploy after git push to remote host
+* proper cross&ndash;browser testing
+* transpiling down to es3 to get ie8 to work
